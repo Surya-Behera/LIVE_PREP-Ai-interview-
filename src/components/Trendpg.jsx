@@ -1,34 +1,42 @@
- import React, { useState, useEffect } from 'react';
- function Trendpg() {
-    const [topic, settopic] = useState('');
-    const [text2, setText2] = useState('');
-    const [text3, setText3] = useState('');
-  
-    useEffect(() => {
-      // Fetch text data from the backend API for div 1
-      fetch('YOUR_BACKEND_API_URL/text1')
-        .then(response => response.json())
-        .then(data => settopic(data.text));
-  
-      // Fetch text data from the backend API for div 2
-      fetch('YOUR_BACKEND_API_URL/text2')
-        .then(response => response.json())
-        .then(data => setText2(data.text));
-  
-      // Fetch text data from the backend API for div 3
-      fetch('YOUR_BACKEND_API_URL/text3')
-        .then(response => response.json())
-        .then(data => setText3(data.text));
-    }, []);
-  return (
-    <>
-     <div className='w-full h-[900px] bg-green-500 p-4' >
-      <div className="text-container w-[1060px] h-[200px] bg-green-100 m-4">{topic}</div>
-      <div className="text-container   w-[1060px] h-[200px] bg-green-100 m-4">{text2}</div>
-      <div className="text-container  w-[1060px] h-[200px] bg-green-100 m-4">{text3}</div>
-    </div>
-     </>
-  )
-}
+import React, { useState, useEffect } from 'react';
 
-export default Trendpg
+const Trendpg = () => {
+  const [data1, setData1] = useState('');
+  const [data2, setData2] = useState('');
+  const [data3, setData3] = useState('');
+
+  const fetchData = async (url, setData) => {
+    try {
+      const response = await fetch(url);
+      const result = await response.json();
+      setData(result);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
+  useEffect(() => {
+    const url1 = 'https://your-django-backend-api-endpoint1';
+    const url2 = 'https://your-django-backend-api-endpoint2';
+    const url3 = 'https://your-django-backend-api-endpoint3';
+
+    fetchData(url1, setData1);
+    fetchData(url2, setData2);
+    fetchData(url3, setData3);
+  }, []); // Empty dependency array ensures that the effect runs only once when the component mounts
+
+  return (
+    <div>
+      <label>Data from URL 1:</label>
+      <input type="text" value={data1} readOnly />
+
+      <label>Data from URL 2:</label>
+      <input type="text" value={data2} readOnly />
+
+      <label>Data from URL 3:</label>
+      <input type="text" value={data3} readOnly />
+    </div>
+  );
+};
+
+export default Trendpg;
