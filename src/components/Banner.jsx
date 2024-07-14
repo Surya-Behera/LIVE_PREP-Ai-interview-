@@ -1,10 +1,6 @@
 import React, { useState } from "react";
 import hero from "../../public/hero.png";
 function Banner() {
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-
-  const openDialog = () => setIsDialogOpen(true);
-  const closeDialog = () => setIsDialogOpen(false);
 
   return (
     <>
@@ -19,7 +15,8 @@ function Banner() {
               Real Questions, Real Companies, Real Success
             </p>
           </div>
-        <button className="p-2 bg-cyan-600 text-white rounded-md mt-3" >  <a href="/course">Get Started</a></button>
+        <button className="p-2 bg-cyan-600 text-white rounded-md mt-3" ><a href="/course">Get Started</a></button>
+       <a href="/vcin" className="p-2 text-red-500">Go online</a>
  
        
         </div>
@@ -33,19 +30,7 @@ function Banner() {
       </div>
 
       {/* Dialog */}
-      {isDialogOpen && (
-        <div className="fixed inset-0 w-[320px] h-[564px] md:w-auto md:h-auto bg-black bg-opacity-50 flex items-center justify-center z-20">
-          <div className="md:w-full md:h-screen w-[320px] h-[564px]  overflow-y-auto float-left">
-            <button 
-              onClick={closeDialog}
-              className="float-right text-white bg-red-600 p-2 hover:bg-white hover:text-red-600 rounded-lg m-2"
-            >
-              close
-            </button>
-            <course />
-          </div>
-        </div>
-      )}
+     
     </>
   );
 }
