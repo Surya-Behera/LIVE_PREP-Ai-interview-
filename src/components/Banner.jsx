@@ -16,7 +16,7 @@ function Banner() {
             </p>
           </div>
         <button className="p-2 bg-cyan-600 text-white rounded-md mt-3" ><a href="/course">Get Started</a></button>
-       <a href="/vcin" className="p-2 text-red-500">Go online</a>
+       {/* <a href="/vcin" className="p-2 text-red-500">Go online</a> */}
  
        
         </div>
