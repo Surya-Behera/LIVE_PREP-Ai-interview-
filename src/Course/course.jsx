@@ -7,7 +7,7 @@ function course() {
     <>
       <Navbar />
       <div className=" min-h-screen p-10 mt-10">
-      <VoiceInput/>
+      {/* <VoiceInput/> */}
       </div>
       <Footer />
     </>

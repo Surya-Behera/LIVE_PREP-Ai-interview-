@@ -3,7 +3,11 @@ import VoiceInput from '../components/VoiceInput'
 
 function vcin() {
   return (
-    <div><VoiceInput/></div>
+    <div>
+      
+      {/* <VoiceInput/> */}
+      
+      </div>
   )
 }
 
